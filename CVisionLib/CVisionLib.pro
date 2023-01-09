@@ -32,4 +32,4 @@ unix {
 win32:CONFIG(release, debug|release): LIBS += -L$$(OPENCV_SDK_DIR)/x64/vc15/lib/ -lopencv_world451
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$(OPENCV_SDK_DIR)/x64/vc15/lib/ -lopencv_world451d
 
-INCLUDEPATH += $$(OPENCV_SDK_DIR)/include/opencv2
+INCLUDEPATH += $$(OPENCV_SDK_DIR)/include/
