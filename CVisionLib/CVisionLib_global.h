@@ -1,0 +1,12 @@
+#ifndef CVISIONLIB_GLOBAL_H
+#define CVISIONLIB_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(CVISIONLIB_LIBRARY)
+#  define CVISIONLIB_EXPORT Q_DECL_EXPORT
+#else
+#  define CVISIONLIB_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // CVISIONLIB_GLOBAL_H
