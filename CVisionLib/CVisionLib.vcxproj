@@ -195,9 +195,10 @@
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtTranslation Include="CVisionLib_zh_CN.ts">
-      <FileType>Document</FileType>
-    </QtTranslation>
+    <QtTranslation Include="Translation\CVisionLib_zh_CN.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="Resource\Resource.qrc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

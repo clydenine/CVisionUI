@@ -16,7 +16,7 @@ HEADERS += \
     mainwindow.h
 
 TRANSLATIONS += \
-    UIApp_zh_CN.ts
+    Translation\UIApp_zh_CN.ts
 CONFIG += lrelease
 CONFIG += embed_translations
 
@@ -25,9 +25,18 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../CVisionLib/release/ -lCVisionLib
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../CVisionLib/debug/ -lCVisionLib
+win32:CONFIG(release, debug|release):{
+    LIBS += -L$$(OPENCV_SDK_DIR)/x64/vc15/lib/ -lopencv_world451
+    LIBS += -L$$OUT_PWD/../CVisionLib/release/ -lCVisionLib }
+else:win32:CONFIG(debug, debug|release):{
+    LIBS += -L$$(OPENCV_SDK_DIR)/x64/vc15/lib/ -lopencv_world451d
+    LIBS += -L$$OUT_PWD/../CVisionLib/debug/ -lCVisionLib }
 else:unix: LIBS += -L$$OUT_PWD/../CVisionLib/ -lCVisionLib
 
+INCLUDEPATH += $$(OPENCV_SDK_DIR)/include/
 INCLUDEPATH += $$PWD/../CVisionLib
 DEPENDPATH += $$PWD/../CVisionLib
+
+RESOURCES += \
+    Resource/Resource.qrc
+

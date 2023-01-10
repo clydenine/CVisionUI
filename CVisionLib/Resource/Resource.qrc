@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>StumbleUpon_32px.png</file>
+        <file>app.ico</file>
+    </qresource>
+</RCC>

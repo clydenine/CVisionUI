@@ -33,6 +33,9 @@
     <Filter Include="Source Files\UI">
       <UniqueIdentifier>{83d9d73a-dc29-44ed-afdf-0b9e55f4a62b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{419e097c-6535-4886-9ba3-dee9af5d78ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cvisionlib.cpp">
@@ -51,13 +54,18 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtTranslation Include="CVisionLib_zh_CN.ts">
+    <QtMoc Include="UI\imageview.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtTranslation Include="Translation\CVisionLib_zh_CN.ts">
       <Filter>Translation Files</Filter>
     </QtTranslation>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="UI\imageview.h">
-      <Filter>Header Files\UI</Filter>
-    </QtMoc>
+    <QtRcc Include="Resource\Resource.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
   </ItemGroup>
 </Project>

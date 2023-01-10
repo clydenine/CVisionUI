@@ -21,7 +21,7 @@ HEADERS += \
     cvisionlib.h
 
 TRANSLATIONS += \
-    CVisionLib_zh_CN.ts
+    Translation\CVisionLib_zh_CN.ts
 
 # Default rules for deployment.
 unix {
@@ -33,3 +33,7 @@ win32:CONFIG(release, debug|release): LIBS += -L$$(OPENCV_SDK_DIR)/x64/vc15/lib/
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$(OPENCV_SDK_DIR)/x64/vc15/lib/ -lopencv_world451d
 
 INCLUDEPATH += $$(OPENCV_SDK_DIR)/include/
+
+RESOURCES += \
+    Resource/Resource.qrc
+

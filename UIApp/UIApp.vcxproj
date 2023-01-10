@@ -57,7 +57,7 @@
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
-    <IncludePath>$(SolutionDir)CVisionLib;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)CVisionLib;$(OPENCV_SDK_DIR)\include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>release\</OutDir>
@@ -159,8 +159,8 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>CVisionLib.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_world451d.lib;CVisionLib.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir);$(OPENCV_SDK_DIR)\x64\vc15\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
       <DataExecutionPrevention>true</DataExecutionPrevention>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -192,7 +192,7 @@
       <InitFuncName>qmake_qmake_qm_files</InitFuncName>
       <Compression>default</Compression>
       <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
-      <QtRccDir>$(Configuration)</QtRccDir>
+      <QtRccDir>$(IntDir)rcc\</QtRccDir>
       <QtRccFileName>qrc_%(Filename).cpp</QtRccFileName>
     </QtRcc>
   </ItemDefinitionGroup>
@@ -205,17 +205,21 @@
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtTranslation Include="UIApp_zh_CN.ts">
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UIApp_zh_CN.ts;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\lrelease.exe UIApp_zh_CN.ts -qm release\UIApp_zh_CN.qm</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">lrelease</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\UIApp_zh_CN.qm;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UIApp_zh_CN.ts;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\lrelease.exe UIApp_zh_CN.ts -qm debug\UIApp_zh_CN.qm</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">lrelease</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\UIApp_zh_CN.qm;%(Outputs)</Outputs>
-      <FileType>Document</FileType>
-    </QtTranslation>
+    <QtTranslation Include="Translation\UIApp_zh_CN.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="Resource\Resource.qrc">
+      <QtRccDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)rcc\</QtRccDir>
+    </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="UIApp.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resource\app.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
