@@ -5,8 +5,9 @@
 #include <QProcess>
 
 ImageView::ImageView(QWidget *parent):QGraphicsView(parent)
-  ,m_scene(nullptr)
-
+    ,m_scene(nullptr)
+    ,m_nHeight(0)
+    ,m_nWidth(0)
 {
     m_scene=new QGraphicsScene(this);
     this->setScene(m_scene);
@@ -79,6 +80,51 @@ void ImageView::dispObj()
     }
     Mat imgTemp;
     cvtColor(m_dispMat,imgTemp,COLOR_BGR2RGB);
+
+}
+
+void ImageView::wheelEvent(QWheelEvent *event)
+{
+
+}
+
+void ImageView::keyPressEvent(QKeyEvent *event)
+{
+
+}
+
+void ImageView::mousePressEvent(QMouseEvent *event)
+{
+
+}
+
+void ImageView::mouseMoveEvent(QMouseEvent *event)
+{
+
+}
+
+void ImageView::mouseReleaseEvent(QMouseEvent *event)
+{
+
+}
+
+void ImageView::resizeEvent(QResizeEvent *event)
+{
+
+}
+
+void ImageView::zoom(QPoint factor)
+{
+
+}
+
+void ImageView::togglePan(bool pan, const QPoint &startPos)
+{
+
+}
+
+void ImageView::pan(const QPoint &panTo)
+{
 
 }
 
