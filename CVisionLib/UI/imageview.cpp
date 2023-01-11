@@ -67,7 +67,8 @@ void ImageView::loadImage(QString fileName)
 		if ((filter != "jpg") && (filter != "jpeg") && (filter != "png") && (filter != "xpm") && (filter != "bmp")) {
 			return;
 		}
-		m_dispMat = imread(fileName.toLocal8Bit().toStdString(),cv::IMREAD_GRAYSCALE);
+		m_dispMat = imread(fileName.toLocal8Bit().toStdString()/*,cv::IMREAD_GRAYSCALE*/);
+		//imshow("debug", m_dispMat);
 		if (!m_dispMat.empty()) {
 			m_nWidth = m_dispMat.cols;
 			m_nHeight = m_dispMat.rows;
@@ -106,8 +107,6 @@ void ImageView::dispObj()
 	if (m_dispMat.empty()) {
 		return;
 	}
-	Mat imgTemp;
-	cvtColor(m_dispMat, imgTemp, COLOR_BGR2RGB);
 	m_dispImage = QPixmap::fromImage(cvMatToQImage(m_dispMat));
 
 	m_pScene->clear();
@@ -243,7 +242,7 @@ QImage ImageView::cvMatToQImage(Mat& srcMat)
 			dstMat.cols,
 			dstMat.rows,
 			static_cast<int>(dstMat.step),
-			QImage::Format_Grayscale8).copy();
+			QImage::Format_RGB888).copy();
 	}
 	return QImage();
 }

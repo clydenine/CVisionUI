@@ -40,4 +40,5 @@ DEPENDPATH += $$PWD/../CVisionLib
 RESOURCES += \
     Resource/Resource.qrc
 
+# Setting application icon
 RC_ICONS = $$PWD/Resource/app.ico
