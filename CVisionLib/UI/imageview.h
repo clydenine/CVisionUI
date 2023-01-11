@@ -27,7 +27,9 @@ public:
 	void dispObj();
 
 protected:
-	virtual void wheelEvent(QWheelEvent* event) override;
+#if QT_CONFIG(wheelevent)
+    void wheelEvent(QWheelEvent* event) override;
+#endif
 	virtual void keyPressEvent(QKeyEvent* event) override;
 	virtual void mousePressEvent(QMouseEvent* event) override;
 	virtual void mouseMoveEvent(QMouseEvent* event) override;
